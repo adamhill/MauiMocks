@@ -92,6 +92,19 @@ namespace Microsoft.Maui.Tests
             deviceDisplay.MainDisplayInfo.Height.Should().Be(200);
         }
 
+        [Fact]
+        public void ShouldReturnNullForUnregisteredService()
+        {
+            // Arrange
+            var serviceProvider = new MockServiceProvider();
+
+            // Act
+            var result = serviceProvider.GetService(typeof(IDisposable));
+
+            // Assert
+            result.Should().BeNull();
+        }
+
         public void Dispose()
         {
             MauiMocks.Reset();
