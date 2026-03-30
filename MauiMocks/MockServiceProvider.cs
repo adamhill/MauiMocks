@@ -40,7 +40,8 @@ namespace Microsoft.Maui
 
         public object GetService(Type serviceType)
         {
-            return this.services?[serviceType];
+            this.services.TryGetValue(serviceType, out var service);
+            return service;
         }
     }
 }
